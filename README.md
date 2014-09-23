@@ -35,12 +35,12 @@ Array
 
 Via [composer](http://getComposer.org)
 
-`compser require nackjicholson/file-parser=~1.1`
+`compser require nackjicholson/file-parser=~1.2`
 
 or add too composer.json
 ```json
 "require": {
-    "nackjicholson/file-parser": "~1.1"
+    "nackjicholson/file-parser": "~1.2"
 }
 ```
 
