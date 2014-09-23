@@ -7,7 +7,7 @@ use Symfony\Component\Yaml\Parser;
 /**
  * Creates parsing strategies, instances of StrategyInterface.
  */
-class StrategyFactory
+class StrategyFactory implements StrategyFactoryInterface
 {
     /**
      * Creates a new instance of JsonStrategy.
