@@ -1,0 +1,14 @@
+# IDE settings
+.idea
+.DS_Store
+
+# Composer data
+vendor
+composer.phar
+
+# Test and build artifacts
+build
+
+# Local temporary files
+tmp
+
