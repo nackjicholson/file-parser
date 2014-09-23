@@ -10,6 +10,16 @@ use Symfony\Component\Yaml\Parser;
 class StrategyFactory
 {
     /**
+     * Creates a new instance of JsonStrategy.
+     *
+     * @return JsonStrategy
+     */
+    public function createJsonStrategy()
+    {
+        return new JsonStrategy();
+    }
+
+    /**
      * Creates a new instance of YamlStrategy, with a symfony/yaml parser.
      *
      * @return YamlStrategy

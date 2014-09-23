@@ -14,6 +14,12 @@ class StrategyFactoryTest extends \PHPUnit_Framework_TestCase
         $this->sut = new StrategyFactory();
     }
 
+    public function testItShouldCreateJsonStrategy()
+    {
+        $expected = new JsonStrategy();
+        $this->assertEquals($expected, $this->sut->createJsonStrategy());
+    }
+
     public function testItShouldCreateYamlStrategy()
     {
         $expected = new YamlStrategy(new Parser());

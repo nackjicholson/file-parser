@@ -22,14 +22,18 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
         $this->sut->setStrategyFactory($this->strategyFactory);
     }
 
-    public function testYaml()
+    /**
+     * @dataProvider formatProvider
+     */
+    public function testAllFormats($testMethod, $factoryMethod)
     {
         $path = 'bagel.yml';
-        $file = $this->getMock('SplFileObject', [], ['php://memory']);
         $line1 = 'foo';
         $line2 = 'bar';
         $content = $line1 . $line2;
         $result = [ 'yaml' => 'here' ];
+
+        $file = $this->getMock('SplFileObject', [], ['php://memory']);
 
         // Yaml string extraction from file via iteration of lines.
         $file->expects($this->exactly(3))->method('valid')->willReturnOnConsecutiveCalls(true, true, false);
@@ -41,9 +45,17 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
         $strategy = $this->getMock('Nack\\FileParser\\Strategy\\StrategyInterface');
         $strategy->expects($this->once())->method('parse')->with($content)->willReturn($result);
 
-        $this->strategyFactory->expects($this->once())->method('createYamlStrategy')->willReturn($strategy);
+        $this->strategyFactory->expects($this->once())->method($factoryMethod)->willReturn($strategy);
 
-        $this->assertSame($result, $this->sut->yaml($path));
+        $this->assertSame($result, $this->sut->{$testMethod}($path));
+    }
+
+    public function formatProvider()
+    {
+        return [
+            [ 'json', 'createJsonStrategy' ],
+            [ 'yaml', 'createYamlStrategy' ]
+        ];
     }
 
     private function constructMocks()
