@@ -2,6 +2,9 @@
 
 namespace Nack\FileParser\Strategy;
 
+/**
+ * Strategy for parsing json content.
+ */
 class JsonStrategy implements StrategyInterface
 {
     /**
