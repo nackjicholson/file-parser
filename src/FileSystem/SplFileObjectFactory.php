@@ -1,6 +1,6 @@
 <?php
 
-namespace Cascade\FileSystem;
+namespace Nack\FileParser\FileSystem;
 
 /**
  * A factory class to abstract the creation of SPL file object instances from paths.

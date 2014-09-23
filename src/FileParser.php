@@ -2,7 +2,7 @@
 
 namespace Nack\FileParser;
 
-use Cascade\FileSystem\SplFileObjectFactory;
+use Nack\FileParser\FileSystem\SplFileObjectFactory;
 use Nack\FileParser\Strategy\StrategyFactory;
 use Nack\FileParser\Strategy\StrategyFactoryInterface;
 
@@ -32,6 +32,21 @@ class FileParser
     }
 
     /**
+     * Parses the contents of a csv file into a php array.
+     *
+     * @param string $path The file path of the file to parse.
+     *
+     * @return array The php array representation of the csv content of the file.
+     */
+    public function csv($path)
+    {
+        $file = $this->splFileObjectFactory->create($path);
+        $strategy = $this->strategyFactory->createCsvStrategy();
+
+        return $strategy->parse($file);
+    }
+
+    /**
      * Parses the contents of a json file into a php array.
      *
      * @param string $path The file path of the file to parse.
@@ -40,9 +55,10 @@ class FileParser
      */
     public function json($path)
     {
+        $file = $this->splFileObjectFactory->create($path);
         $strategy = $this->strategyFactory->createJsonStrategy();
 
-        return $strategy->parse($this->getFileContent($path));
+        return $strategy->parse($file);
     }
 
     /**
@@ -54,27 +70,9 @@ class FileParser
      */
     public function yaml($path)
     {
+        $file = $this->splFileObjectFactory->create($path);
         $strategy = $this->strategyFactory->createYamlStrategy();
 
-        return $strategy->parse($this->getFileContent($path));
-    }
-
-    /**
-     * Extracts the contents of the file at the given path.
-     *
-     * @param string $path A file path.
-     *
-     * @return string The contents of the file.
-     */
-    private function getFileContent($path)
-    {
-        $file = $this->splFileObjectFactory->create($path);
-
-        $content = '';
-        foreach ($file as $line) {
-            $content .= $line;
-        }
-
-        return $content;
+        return $strategy->parse($file);
     }
 }

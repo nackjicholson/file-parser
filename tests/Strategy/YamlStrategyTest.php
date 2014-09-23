@@ -18,9 +18,19 @@ class YamlStrategyTest extends \PHPUnit_Framework_TestCase
 
     public function testParse()
     {
-        $content = 'foo';
-        $parsedValue = [ 'foo' ];
-        $this->parser->expects($this->once())->method('parse')->with($content)->willReturn($parsedValue);
-        $this->assertSame($parsedValue, $this->sut->parse($content));
+        $line1 = 'foo: ';
+        $line2 = 'bar';
+        $content = $line1 . $line2;
+        $expected = [ 'foo' => 'bar' ];
+
+        $file = $this->getMock('SplFileObject', [], ['php://memory']);
+
+        // Yaml string extraction from file via iteration of lines.
+        $file->expects($this->exactly(3))->method('valid')->willReturnOnConsecutiveCalls(true, true, false);
+        $file->expects($this->exactly(2))->method('current')->willReturnOnConsecutiveCalls($line1, $line2);
+        $file->expects($this->exactly(2))->method('next')->withAnyParameters();
+
+        $this->parser->expects($this->once())->method('parse')->with($content)->willReturn($expected);
+        $this->assertSame($expected, $this->sut->parse($file));
     }
 }

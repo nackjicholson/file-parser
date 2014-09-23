@@ -10,9 +10,9 @@ interface StrategyInterface
     /**
      * Parses a string of data into a php array.
      *
-     * @param string $content
+     * @param \SplFileObject $file
      *
      * @return array
      */
-    public function parse($content);
+    public function parse(\SplFileObject $file);
 }

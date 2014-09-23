@@ -1,6 +1,6 @@
 <?php
 
-namespace Cascade\FileSystem;
+namespace Nack\FileParser\FileSystem;
 
 /**
  * The interface which defines the required behavior for file factories -- objects that create useful representations

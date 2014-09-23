@@ -1,6 +1,6 @@
 <?php
 
-namespace Cascade\FileSystem;
+namespace Nack\FileParser\FileSystem;
 
 class SplFileObjectFactoryTest extends \PHPUnit_Framework_TestCase
 {

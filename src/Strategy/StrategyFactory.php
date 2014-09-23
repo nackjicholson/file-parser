@@ -10,6 +10,16 @@ use Symfony\Component\Yaml\Parser;
 class StrategyFactory implements StrategyFactoryInterface
 {
     /**
+     * Creates a new instance of CsvStrategy.
+     *
+     * @return CsvStrategy
+     */
+    public function createCsvStrategy()
+    {
+        return new CsvStrategy();
+    }
+
+    /**
      * Creates a new instance of JsonStrategy.
      *
      * @return JsonStrategy

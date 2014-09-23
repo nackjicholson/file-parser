@@ -2,6 +2,7 @@
 
 namespace Nack\FileParser\Strategy;
 
+use Nack\FileParser\FileSystem\GetFileContentsTrait;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -9,6 +10,8 @@ use Symfony\Component\Yaml\Parser;
  */
 class YamlStrategy implements StrategyInterface
 {
+    use GetFileContentsTrait;
+
     /** @var Parser */
     private $parser;
 
@@ -20,12 +23,13 @@ class YamlStrategy implements StrategyInterface
     /**
      * Parses a string of data into a php array.
      *
-     * @param string $content
+     * @param \SplFileObject $file
      *
      * @return array
      */
-    public function parse($content)
+    public function parse(\SplFileObject $file)
     {
-        return $this->parser->parse($content);
+        $contents = $this->getFileContents($file);
+        return $this->parser->parse($contents);
     }
 }
