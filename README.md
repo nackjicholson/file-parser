@@ -34,7 +34,7 @@ echo PHP_EOL;
 
 Outputs:
 
-```txt
+```
 Array from yaml file:
 Array
 (
