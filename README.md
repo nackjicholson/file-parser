@@ -14,6 +14,8 @@ foo: bar
 }
 ```
 
+*example.php*
+
 ```php
 <?php
 
