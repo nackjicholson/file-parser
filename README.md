@@ -6,7 +6,7 @@
 foo: bar
 ```
 
-*bagel.json*
+*foobar.json*
 
 ```json
 {
