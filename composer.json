@@ -10,12 +10,14 @@
     ],
     "autoload": {
         "psr-4": {
-            "Nack\\Component\\FileParser\\": "src/"
+            "Nack\\FileParser\\": "src/",
+            "Cascade\\FileSystem\\": "src/FileSystem/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nack\\Component\\FileParser\\": "tests/"
+            "Nack\\FileParser\\": "tests/",
+            "Cascade\\FileSystem\\": "src/FileSystem/"
         }
     },
     "require": {

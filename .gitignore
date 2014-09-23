@@ -10,5 +10,5 @@ composer.phar
 build
 
 # Local temporary files
-tmp
+scratch
 
