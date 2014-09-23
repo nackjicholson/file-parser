@@ -1,4 +1,10 @@
-This is a composer package for parsing **YAML**, **JSON**, and **CSV** data files as a php array.
+This is a composer package for parsing data files into php arrays.
+
+Current available formats:
+
+- CSV
+- JSON
+- YAML
 
 ## Example:
 
