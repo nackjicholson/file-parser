@@ -4,6 +4,7 @@ namespace Nack\FileParser;
 
 use Cascade\FileSystem\SplFileObjectFactory;
 use Nack\FileParser\Strategy\StrategyFactory;
+use Nack\FileParser\Strategy\StrategyFactoryInterface;
 
 /**
  * Parses the data content of a file into a php array.
@@ -13,32 +14,21 @@ class FileParser
     /** @var SplFileObjectFactory */
     private $splFileObjectFactory;
 
-    /** @var StrategyFactory */
+    /** @var StrategyFactoryInterface */
     private $strategyFactory;
 
     /**
-     * @param SplFileObjectFactory $fileFactory
+     * Sets or initializes default factory classes.
+     *
+     * @param SplFileObjectFactory $splFileObjectFactory
+     * @param StrategyFactoryInterface $strategyFactory
      */
-    public function setSplFileObjectFactory(SplFileObjectFactory $fileFactory)
-    {
-        $this->splFileObjectFactory = $fileFactory;
-    }
-
-    /**
-     * @param StrategyFactory $strategyFactory
-     */
-    public function setStrategyFactory(StrategyFactory $strategyFactory)
-    {
-        $this->strategyFactory = $strategyFactory;
-    }
-
-    /**
-     * Initializes default factory classes.
-     */
-    public function __construct()
-    {
-        $this->splFileObjectFactory = $this->getDefaultSplFileObjectFactory();
-        $this->strategyFactory = $this->getDefaultStrategyFactory();
+    public function __construct(
+        SplFileObjectFactory $splFileObjectFactory = null,
+        StrategyFactoryInterface $strategyFactory = null
+    ) {
+        $this->splFileObjectFactory = isset($splFileObjectFactory) ? $splFileObjectFactory : new SplFileObjectFactory();
+        $this->strategyFactory = isset($strategyFactory) ? $strategyFactory : new StrategyFactory();
     }
 
     /**
@@ -67,26 +57,6 @@ class FileParser
         $strategy = $this->strategyFactory->createYamlStrategy();
 
         return $strategy->parse($this->getFileContent($path));
-    }
-
-    /**
-     * Provides a SplFileObjectFactory.
-     *
-     * @return SplFileObjectFactory
-     */
-    private function getDefaultSplFileObjectFactory()
-    {
-        return new SplFileObjectFactory();
-    }
-
-    /**
-     * Provides a StrategyFactory
-     *
-     * @return StrategyFactory
-     */
-    private function getDefaultStrategyFactory()
-    {
-        return new StrategyFactory();
     }
 
     /**

@@ -17,9 +17,7 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
     {
         $this->constructMocks();
 
-        $this->sut = new FileParser();
-        $this->sut->setSplFileObjectFactory($this->splFileObjectFactory);
-        $this->sut->setStrategyFactory($this->strategyFactory);
+        $this->sut = new FileParser($this->splFileObjectFactory, $this->strategyFactory);
     }
 
     /**
@@ -61,6 +59,6 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
     private function constructMocks()
     {
         $this->splFileObjectFactory = $this->getMock('Cascade\\FileSystem\\SplFileObjectFactory');
-        $this->strategyFactory = $this->getMock(__NAMESPACE__ . '\\Strategy\\StrategyFactory');
+        $this->strategyFactory = $this->getMock(__NAMESPACE__ . '\\Strategy\\StrategyFactoryInterface');
     }
 }
