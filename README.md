@@ -1,3 +1,5 @@
+This is a composer package for parsing **YAML**, **JSON**, and **CSV** data files as a php array.
+
 ## Example:
 
 *foobar.yml*
