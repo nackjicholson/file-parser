@@ -63,6 +63,7 @@ foo,bar
 
 bingo,bango,bongo
 ```
+`$fileParser->csv('file.csv');`
 ```
 [
     [ 'foo', 'bar' ],
@@ -88,7 +89,7 @@ The second row is a complete set of data.
 The third has a name, but empty email and phone.
 The fourth is not a row, it's a blank line.
 
-Parsing this produces:
+`$fileParser->csvColumnar('contacts.csv');`
 ```
 [
     [
@@ -115,6 +116,7 @@ bingo,bango,bongo
 ,nope,not,a,chance
 emptyValue,
 ```
+`$fileParser->csvRows('rows.csv');`
 ```
 [
     'foo' => 'bar',
@@ -136,6 +138,7 @@ Parses a json file into a php array. This parsing strategy delegates directly to
     "foo": "bar"
 }
 ```
+`$fileParser->json('foobar.json');`
 ```
 [ 'foo' => 'bar' ]
 ```
@@ -149,6 +152,7 @@ Parses a yaml file into a php array. This parsing strategy delegates directly to
 ```
 foo: bar
 ```
+`$fileParser->yaml('foobar.yml');`
 ```
 [ 'foo' => 'bar' ]
 ```
