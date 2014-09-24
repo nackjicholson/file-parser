@@ -33,15 +33,31 @@ class FileParser
 
     /**
      * Parses the contents of a csv file into a php array.
+     * The csv column wise parsing takes into account the first row of a csv as headers.
+     *
+     * Col1,Col2
+     * Row1Col1,Row1Col2
+     * .
+     * .
+     * .
+     *
+     * Becomes:
+     *
+     * [
+     *   [ 'Col1' => 'Row1Col1', 'Col2' => 'Row1Col2' ]
+     *   .
+     *   .
+     *   .
+     * ]
      *
      * @param mixed $file The file path of the file to parse.
      *
      * @return array The php array representation of the csv content of the file.
      */
-    public function csv($file)
+    public function csvColumns($file)
     {
         $file = $this->ensureSplFileObject($file);
-        $strategy = $this->strategyFactory->createCsvStrategy();
+        $strategy = $this->strategyFactory->createCsvColumnsStrategy();
         return $strategy->parse($file);
     }
 

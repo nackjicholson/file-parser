@@ -14,10 +14,10 @@ class StrategyFactoryTest extends \PHPUnit_Framework_TestCase
         $this->sut = new StrategyFactory();
     }
 
-    public function testItShouldCreateCsvStrategy()
+    public function testItShouldCreateCsvColumnsStrategy()
     {
-        $expected = new CsvStrategy();
-        $this->assertEquals($expected, $this->sut->createCsvStrategy());
+        $expected = new CsvColumnsStrategy();
+        $this->assertEquals($expected, $this->sut->createCsvColumnsStrategy());
     }
 
     public function testItShouldCreateJsonStrategy()

@@ -2,14 +2,14 @@
 
 namespace Nack\FileParser\Strategy;
 
-class CsvStrategyTest extends \PHPUnit_Framework_TestCase
+class CsvColumnsStrategyTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var CsvStrategy */
+    /** @var CsvColumnsStrategy */
     private $sut;
 
     public function setUp()
     {
-        $this->sut = new CsvStrategy();
+        $this->sut = new CsvColumnsStrategy();
     }
 
     public function testParse()

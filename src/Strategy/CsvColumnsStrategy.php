@@ -5,7 +5,7 @@ namespace Nack\FileParser\Strategy;
 /**
  * Strategy for parsing json content.
  */
-class CsvStrategy implements StrategyInterface
+class CsvColumnsStrategy implements StrategyInterface
 {
     /**
      * Parses a string of data into a php array.
