@@ -29,6 +29,13 @@ interface StrategyFactoryInterface
     public function createCsvRowsStrategy();
 
     /**
+     * Creates a new instance of IniStrategy.
+     *
+     * @return IniStrategy
+     */
+    public function createIniStrategy();
+
+    /**
      * Creates a new instance of JsonStrategy.
      *
      * @return JsonStrategy

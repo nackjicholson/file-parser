@@ -61,6 +61,7 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
             [ $filePath, 'csv', 'createCsvStrategy' ],
             [ $filePath, 'csvColumnar', 'createCsvColumnarStrategy' ],
             [ $filePath, 'csvRows', 'createCsvRowsStrategy' ],
+            [ $filePath, 'ini', 'createIniStrategy' ],
             [ $fileInfo, 'json', 'createJsonStrategy' ],
             [ $fileObject, 'yaml', 'createYamlStrategy' ]
         ];

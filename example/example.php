@@ -23,3 +23,5 @@ print_r($fileParser->csvColumnar($fileObject));
 
 // csv rows
 print_r($fileParser->csvRows('rows.csv'));
+
+//print_r($fileParser->ini('/opt/local/etc/php55/php.ini'));

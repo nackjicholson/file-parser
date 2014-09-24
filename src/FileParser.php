@@ -117,9 +117,23 @@ class FileParser
     }
 
     /**
+     * Parses the contents of a ini file into a php array.
+     *
+     * @param mixed $file The file path, SplFileInfo, or SplFileObject
+     *
+     * @return array The php array representation of the ini content of the file.
+     */
+    public function ini($file)
+    {
+        $file = $this->ensureSplFileObject($file);
+        $strategy = $this->strategyFactory->createIniStrategy();
+        return $strategy->parse($file);
+    }
+
+    /**
      * Parses the contents of a json file into a php array.
      *
-     * @param mixed $file The file path of the file to parse.
+     * @param mixed $file The file path, SplFileInfo, or SplFileObject
      *
      * @return array The php array representation of the json content of the file.
      */

@@ -40,6 +40,16 @@ class StrategyFactory implements StrategyFactoryInterface
     }
 
     /**
+     * Creates a new instance of IniStrategy.
+     *
+     * @return IniStrategy
+     */
+    public function createIniStrategy()
+    {
+        return new IniStrategy();
+    }
+
+    /**
      * Creates a new instance of JsonStrategy.
      *
      * @return JsonStrategy
