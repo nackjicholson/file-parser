@@ -8,11 +8,25 @@ namespace Nack\FileParser\Strategy;
 interface StrategyFactoryInterface
 {
     /**
+     * Creates a new instance of CsvStrategy.
+     *
+     * @return CsvStrategy
+     */
+    public function createCsvStrategy();
+
+    /**
      * Creates a new instance of CsvColumnarStrategy.
      *
      * @return CsvColumnarStrategy
      */
     public function createCsvColumnarStrategy();
+
+    /**
+     * Creates a new instance of CsvRowsStrategy.
+     *
+     * @return CsvRowsStrategy
+     */
+    public function createCsvRowsStrategy();
 
     /**
      * Creates a new instance of JsonStrategy.

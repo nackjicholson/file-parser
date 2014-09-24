@@ -33,6 +33,33 @@ class FileParser
 
     /**
      * Parses the contents of a csv file into a php array.
+     * Literal parse of every line as csv.
+     *
+     * Csv file content:
+     *
+     * Col1,Col2
+     * Row1Col1,Row1Col2
+     *
+     * Becomes:
+     *
+     * [
+     *   [ 'Col1', 'Col2' ],
+     *   [ 'Row1Col1', 'Row1Col2' ]
+     * ]
+     *
+     * @param mixed $file The file path of the file to parse.
+     *
+     * @return array
+     */
+    public function csv($file)
+    {
+        $file = $this->ensureSplFileObject($file);
+        $strategy = $this->strategyFactory->createCsvStrategy();
+        return $strategy->parse($file);
+    }
+
+    /**
+     * Parses the contents of a csv file into a php array.
      * Takes into account the first row of a csv file as column headers,
      * and attaches each column header to its associated row value.
      *
@@ -40,27 +67,52 @@ class FileParser
      *
      * Col1,Col2
      * Row1Col1,Row1Col2
-     * .
-     * .
-     * .
      *
      * Becomes:
      *
      * [
      *   [ 'Col1' => 'Row1Col1', 'Col2' => 'Row1Col2' ]
-     *   .
-     *   .
-     *   .
      * ]
      *
      * @param mixed $file The file path of the file to parse.
      *
-     * @return array The php array representation of the csv content of the file.
+     * @return array
      */
     public function csvColumnar($file)
     {
         $file = $this->ensureSplFileObject($file);
         $strategy = $this->strategyFactory->createCsvColumnarStrategy();
+        return $strategy->parse($file);
+    }
+
+    /**
+     * Parses the contents of a csv file into a php array.
+     * Row parsing uses the first item in each row as a key.
+     * Rows with two items will be: key => value
+     * Rows with more than two items will have the key set to an array of values: key => [ values... ]
+     * It ignores lines which are null, or have a null first value.
+     *
+     * Csv file content:
+     *
+     * foo,bar
+     * bingo,bango,bongo
+     * null, bagel, cream, cheese
+     *
+     * Becomes:
+     *
+     * [
+     *   'foo' => 'bar',
+     *   'bingo' => [ 'bango', 'bongo' ]
+     * ]
+     *
+     * @param mixed $file The file path of the file to parse.
+     *
+     * @return array
+     */
+    public function csvRows($file)
+    {
+        $file = $this->ensureSplFileObject($file);
+        $strategy = $this->strategyFactory->createCsvRowsStrategy();
         return $strategy->parse($file);
     }
 

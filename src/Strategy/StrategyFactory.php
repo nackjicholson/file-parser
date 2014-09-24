@@ -10,6 +10,16 @@ use Symfony\Component\Yaml\Parser;
 class StrategyFactory implements StrategyFactoryInterface
 {
     /**
+     * Creates a new instance of CsvStrategy.
+     *
+     * @return CsvStrategy
+     */
+    public function createCsvStrategy()
+    {
+        return new CsvStrategy();
+    }
+
+    /**
      * Creates a new instance of CsvColumnarStrategy.
      *
      * @return CsvColumnarStrategy
@@ -17,6 +27,16 @@ class StrategyFactory implements StrategyFactoryInterface
     public function createCsvColumnarStrategy()
     {
         return new CsvColumnarStrategy();
+    }
+
+    /**
+     * Creates a new instance of CsvRowsStrategy.
+     *
+     * @return CsvRowsStrategy
+     */
+    public function createCsvRowsStrategy()
+    {
+        return new CsvRowsStrategy();
     }
 
     /**

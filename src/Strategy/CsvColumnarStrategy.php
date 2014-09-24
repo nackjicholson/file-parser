@@ -3,7 +3,7 @@
 namespace Nack\FileParser\Strategy;
 
 /**
- * Strategy for parsing json content.
+ * Strategy for parsing csv content in a columnar fashion.
  */
 class CsvColumnarStrategy implements StrategyInterface
 {
