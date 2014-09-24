@@ -180,5 +180,7 @@ Write tests, and make pull requests. If you do not test your code with 100% cove
 ## Contact me
 
 Will Vaughn
+
 email: willieviseoae@gmail.com
+
 twitter: [@nackjicholsonn](http://twitter.com/nackjicholsonn)
