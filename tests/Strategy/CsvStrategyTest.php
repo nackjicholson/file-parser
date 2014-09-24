@@ -8,7 +8,7 @@ class CsvStrategyTest extends \PHPUnit_Framework_TestCase
     {
         $row1 = [ 'foo', 'bar' ];
         $row2 = [ null ];
-        $row3 = [ null, 'bagel', 'cream', null, 'cheese'];
+        $row3 = [ '', 'bagel', 'cream', '', 'cheese'];
 
         $file = $this->getMock('SplFileObject', [ ], [ 'php://memory' ]);
 

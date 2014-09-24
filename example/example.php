@@ -15,7 +15,7 @@ $fileInfo = new \SplFileInfo('foobar.json');
 print_r($fileParser->json($fileInfo));
 
 // csv normal
-print_r($fileParser->csvRows('foobar.csv'));
+print_r($fileParser->csv('foobar.csv'));
 
 // csv columnar from file object.
 $fileObject = new \SplFileObject('columnar.csv');
