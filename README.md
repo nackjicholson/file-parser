@@ -127,11 +127,19 @@ emptyValue,
 
 As you can see it ignores blank lines, or lines where the key would be empty.
 
+## INI
+
+### ::ini
+
+This method will parse a php ini configuration file into an array. It delegates directly to PHP's built in function `parse_ini_file`.
+
+`$fileParse->ini('/etc/php55/php.ini');`
+
 ## JSON
 
 ### ::json
 
-Parses a json file into a php array. This parsing strategy delegates directly to php's built in `json_decode`.
+Parses a json file into a php array. This parsing strategy delegates directly to PHP's built in `json_decode`.
 
 ```json
 {
