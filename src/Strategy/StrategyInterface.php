@@ -8,7 +8,7 @@ namespace Nack\FileParser\Strategy;
 interface StrategyInterface
 {
     /**
-     * Parses a string of data into a php array.
+     * Parses a file of data into a php array.
      *
      * @param \SplFileObject $file
      *

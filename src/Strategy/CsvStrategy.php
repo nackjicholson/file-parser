@@ -5,7 +5,7 @@ namespace Nack\FileParser\Strategy;
 class CsvStrategy implements StrategyInterface
 {
     /**
-     * Parses a string of data into a php array.
+     * Parses a file of data into a php array.
      *
      * @param \SplFileObject $file
      *
