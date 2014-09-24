@@ -1,7 +1,7 @@
 file-parser
 ===
 
-This a composer package for parsing files that contain structured data.
+This is a composer package for parsing files that contain structured data.
 
 The current supported formats are:
 
