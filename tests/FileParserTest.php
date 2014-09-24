@@ -23,29 +23,44 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider formatProvider
      */
-    public function testAllFormats($testMethod, $factoryMethod)
+    public function testAllFormats($fileArgument, $testMethod, $factoryMethod)
     {
-        $path = 'bagel.yml';
         $result = [ 'yaml' => 'here' ];
 
-        $file = $this->getMock('SplFileObject', [], ['php://memory']);
+        $fileObject = $this->getMock('SplFileObject', [], ['php://memory']);
 
-        $this->splFileObjectFactory->expects($this->once())->method('create')->with($path)->willReturn($file);
+        if (is_string($fileArgument)) {
+            $this->splFileObjectFactory
+                ->expects($this->once())
+                ->method('create')
+                ->with($fileArgument)
+                ->willReturn($fileObject);
+        } elseif ($fileArgument instanceof \SplFileInfo) {
+            /** @var \PHPUnit_Framework_MockObject_MockObject $fileArgument */
+            $fileArgument
+                ->expects($this->once())
+                ->method('openFile')
+                ->willReturn($fileObject);
+        }
 
         $strategy = $this->getMock('Nack\\FileParser\\Strategy\\StrategyInterface');
-        $strategy->expects($this->once())->method('parse')->with($file)->willReturn($result);
+        $strategy->expects($this->once())->method('parse')->with($fileObject)->willReturn($result);
 
         $this->strategyFactory->expects($this->once())->method($factoryMethod)->willReturn($strategy);
 
-        $this->assertSame($result, $this->sut->{$testMethod}($path));
+        $this->assertSame($result, $this->sut->{$testMethod}($fileArgument));
     }
 
     public function formatProvider()
     {
+        $filePath = 'bagel';
+        $fileInfo = $this->getMock('SplFileInfo', [], ['php://memory']);
+        $fileObject = $this->getMock('SplFileObject', [], ['php://memory']);
+
         return [
-            [ 'csv', 'createCsvStrategy' ],
-            [ 'json', 'createJsonStrategy' ],
-            [ 'yaml', 'createYamlStrategy' ]
+            [ $filePath, 'csv', 'createCsvStrategy' ],
+            [ $fileInfo, 'json', 'createJsonStrategy' ],
+            [ $fileObject, 'yaml', 'createYamlStrategy' ]
         ];
     }
 
