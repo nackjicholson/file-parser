@@ -51,7 +51,7 @@ or add too composer.json
 
 This library provides three ways to parse a csv file into a php array.
 
-**WARNING:** Right now only ',' delimeters are supported. Please contribute :)
+**WARNING:** Only `,` delimeters are supported. Please contribute! :)
 
 ### ::csv
 
@@ -156,3 +156,29 @@ foo: bar
 ```
 [ 'foo' => 'bar' ]
 ```
+
+## SplFileInfo and SplFileObject Support
+
+Instead of passing a path to any of the file-parser methods. You can supply either a `SplFileInfo` or `SplFileObject` object.
+
+```php
+$fileParser = new FileParser();
+
+$splFileInfo = new \SplFileInfo('path/to/file.yml');
+$fileParser->yaml($splFileInfo);
+
+$splFileObject = new \SplFileObject('path/to/file.json');
+$fileParser->json($splFileObject);
+```
+
+## Contributing
+
+Report issues, and feel free to make requests there. Tag github issues with the best label you can.
+If this library doesn't do something you want, it's not difficult to extend. The library is built on the strategy pattern, new strategies can parse data differently.
+Write tests, and make pull requests. If you do not test your code with 100% coverage, your PR will be rejected.
+
+## Contact me
+
+Will Vaughn
+email: willieviseoae@gmail.com
+twitter: [@nackjicholsonn](http://twitter.com/nackjicholsonn)
