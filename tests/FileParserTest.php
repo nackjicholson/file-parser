@@ -58,7 +58,7 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
         $fileObject = $this->getMock('SplFileObject', [], ['php://memory']);
 
         return [
-            [ $filePath, 'csvColumns', 'createCsvColumnsStrategy' ],
+            [ $filePath, 'csvColumnar', 'createCsvColumnarStrategy' ],
             [ $fileInfo, 'json', 'createJsonStrategy' ],
             [ $fileObject, 'yaml', 'createYamlStrategy' ]
         ];

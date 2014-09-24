@@ -2,17 +2,9 @@
 
 namespace Nack\FileParser\Strategy;
 
-class CsvColumnsStrategyTest extends \PHPUnit_Framework_TestCase
+class CsvColumnarStrategyTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var CsvColumnsStrategy */
-    private $sut;
-
-    public function setUp()
-    {
-        $this->sut = new CsvColumnsStrategy();
-    }
-
-    public function testParse()
+    public function testShouldParseCsvAsColumnarData()
     {
         $header = [ 'foo', 'beep' ];
         $row = [ 'bar', 'boop' ];
@@ -37,6 +29,7 @@ class CsvColumnsStrategyTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
-        $this->assertEquals($expectedResult, $this->sut->parse($file));
+        $sut = new CsvColumnarStrategy();
+        $this->assertEquals($expectedResult, $sut->parse($file));
     }
 }

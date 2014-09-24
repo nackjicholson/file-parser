@@ -13,4 +13,4 @@ print_r($fileParser->json($fileInfo));
 
 // csv from a file object.
 $fileObject = new \SplFileObject('foobar.csv');
-print_r($fileParser->csvColumns($fileObject));
+print_r($fileParser->csvColumnar($fileObject));

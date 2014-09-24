@@ -33,7 +33,10 @@ class FileParser
 
     /**
      * Parses the contents of a csv file into a php array.
-     * The csv column wise parsing takes into account the first row of a csv as headers.
+     * Takes into account the first row of a csv file as column headers,
+     * and attaches each column header to its associated row value.
+     *
+     * Csv file content:
      *
      * Col1,Col2
      * Row1Col1,Row1Col2
@@ -54,10 +57,10 @@ class FileParser
      *
      * @return array The php array representation of the csv content of the file.
      */
-    public function csvColumns($file)
+    public function csvColumnar($file)
     {
         $file = $this->ensureSplFileObject($file);
-        $strategy = $this->strategyFactory->createCsvColumnsStrategy();
+        $strategy = $this->strategyFactory->createCsvColumnarStrategy();
         return $strategy->parse($file);
     }
 
@@ -91,8 +94,9 @@ class FileParser
 
     /**
      * Ensures that the argument is, or is converted into an SplFileObject.
-     * This method allows the methods of this class to accept a string file path,
-     * a SplFileInfo instance, or a SplFileObject.
+     * This method allows the public methods in this class to accept a string file path,
+     * a SplFileInfo instance, or a SplFileObject and have them all resolve to
+     * an SplFileObject to send to the strategy for parsing.
      *
      * @param mixed $file
      * @return \SplFileObject
