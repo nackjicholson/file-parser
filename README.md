@@ -10,6 +10,8 @@ The current supported formats are:
 - Yaml
 - .ini
 
+**WARNING** Only works with PHP 5.4 and up due to short array syntax and use of traits.
+
 ## Example:
 
 *foobar.yml*
