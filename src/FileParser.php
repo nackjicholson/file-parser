@@ -48,13 +48,14 @@ class FileParser
      * ]
      *
      * @param mixed $file The file path of the file to parse.
+     * @param array $options Hash of options, override default fgetcsv options here.
      *
      * @return array
      */
-    public function csv($file)
+    public function csv($file, array $options = [])
     {
         $file = $this->ensureSplFileObject($file);
-        $strategy = $this->strategyFactory->createCsvStrategy();
+        $strategy = $this->strategyFactory->createCsvStrategy($options);
         return $strategy->parse($file);
     }
 
@@ -75,13 +76,14 @@ class FileParser
      * ]
      *
      * @param mixed $file The file path of the file to parse.
+     * @param array $options Hash of options, override default fgetcsv options here.
      *
      * @return array
      */
-    public function csvColumnar($file)
+    public function csvColumnar($file, array $options = [])
     {
         $file = $this->ensureSplFileObject($file);
-        $strategy = $this->strategyFactory->createCsvColumnarStrategy();
+        $strategy = $this->strategyFactory->createCsvColumnarStrategy($options);
         return $strategy->parse($file);
     }
 
@@ -106,13 +108,14 @@ class FileParser
      * ]
      *
      * @param mixed $file The file path of the file to parse.
+     * @param array $options Hash of options, override default fgetcsv options here.
      *
      * @return array
      */
-    public function csvRows($file)
+    public function csvRows($file, array $options = [])
     {
         $file = $this->ensureSplFileObject($file);
-        $strategy = $this->strategyFactory->createCsvRowsStrategy();
+        $strategy = $this->strategyFactory->createCsvRowsStrategy($options);
         return $strategy->parse($file);
     }
 

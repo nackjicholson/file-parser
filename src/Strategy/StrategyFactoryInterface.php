@@ -2,6 +2,10 @@
 
 namespace Nack\FileParser\Strategy;
 
+use Nack\FileParser\Strategy\Csv\CsvColumnarStrategy;
+use Nack\FileParser\Strategy\Csv\CsvRowsStrategy;
+use Nack\FileParser\Strategy\Csv\CsvStrategy;
+
 /**
  * Interface describes methods for each of the buildable strategy classes.
  */
@@ -10,23 +14,26 @@ interface StrategyFactoryInterface
     /**
      * Creates a new instance of CsvStrategy.
      *
+     * @param array $options
      * @return CsvStrategy
      */
-    public function createCsvStrategy();
+    public function createCsvStrategy(array $options);
 
     /**
      * Creates a new instance of CsvColumnarStrategy.
      *
+     * @param array $options
      * @return CsvColumnarStrategy
      */
-    public function createCsvColumnarStrategy();
+    public function createCsvColumnarStrategy(array $options);
 
     /**
      * Creates a new instance of CsvRowsStrategy.
      *
+     * @param array $options
      * @return CsvRowsStrategy
      */
-    public function createCsvRowsStrategy();
+    public function createCsvRowsStrategy(array $options);
 
     /**
      * Creates a new instance of IniStrategy.

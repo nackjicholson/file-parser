@@ -1,11 +1,14 @@
 <?php
 
-namespace Nack\FileParser\Strategy;
+namespace Nack\FileParser\Strategy\Csv;
 
 class CsvColumnarStrategyTest extends \PHPUnit_Framework_TestCase
 {
     public function testShouldParseCsvAsColumnarData()
     {
+        $sut = new CsvColumnarStrategy();
+
+        $options = $this->readAttribute($sut, 'options');
         $header = [ 'foo', 'beep' ];
         $row = [ 'bar', 'boop' ];
         $emptyRow = [ null ];
@@ -14,13 +17,13 @@ class CsvColumnarStrategyTest extends \PHPUnit_Framework_TestCase
 
         $file
             ->expects($this->exactly(3))
-            ->method('fgetcsv')
-            ->willReturnOnConsecutiveCalls($header, $row, $emptyRow);
-
-        $file
-            ->expects($this->exactly(3))
             ->method('eof')
             ->willReturnOnConsecutiveCalls(false, false, true);
+        $file
+            ->expects($this->exactly(3))
+            ->method('fgetcsv')
+            ->with($options['delimiter'], $options['enclosure'], $options['escape'])
+            ->willReturnOnConsecutiveCalls($header, $row, $emptyRow);
 
         $expectedResult = [
             [
@@ -29,7 +32,6 @@ class CsvColumnarStrategyTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
-        $sut = new CsvColumnarStrategy();
         $this->assertEquals($expectedResult, $sut->parse($file));
     }
 }

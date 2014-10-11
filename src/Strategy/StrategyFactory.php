@@ -2,6 +2,9 @@
 
 namespace Nack\FileParser\Strategy;
 
+use Nack\FileParser\Strategy\Csv\CsvColumnarStrategy;
+use Nack\FileParser\Strategy\Csv\CsvRowsStrategy;
+use Nack\FileParser\Strategy\Csv\CsvStrategy;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -12,31 +15,43 @@ class StrategyFactory implements StrategyFactoryInterface
     /**
      * Creates a new instance of CsvStrategy.
      *
+     * @param array $options
      * @return CsvStrategy
      */
-    public function createCsvStrategy()
+    public function createCsvStrategy(array $options)
     {
-        return new CsvStrategy();
+        $strategy = new CsvStrategy();
+        $strategy->setOptions($options);
+
+        return $strategy;
     }
 
     /**
      * Creates a new instance of CsvColumnarStrategy.
      *
+     * @param array $options
      * @return CsvColumnarStrategy
      */
-    public function createCsvColumnarStrategy()
+    public function createCsvColumnarStrategy(array $options)
     {
-        return new CsvColumnarStrategy();
+        $strategy = new CsvColumnarStrategy();
+        $strategy->setOptions($options);
+
+        return $strategy;
     }
 
     /**
      * Creates a new instance of CsvRowsStrategy.
      *
+     * @param array $options
      * @return CsvRowsStrategy
      */
-    public function createCsvRowsStrategy()
+    public function createCsvRowsStrategy(array $options)
     {
-        return new CsvRowsStrategy();
+        $strategy = new CsvRowsStrategy();
+        $strategy->setOptions($options);
+
+        return $strategy;
     }
 
     /**

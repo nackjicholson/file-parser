@@ -2,6 +2,9 @@
 
 namespace Nack\FileParser\Strategy;
 
+use Nack\FileParser\Strategy\Csv\CsvColumnarStrategy;
+use Nack\FileParser\Strategy\Csv\CsvRowsStrategy;
+use Nack\FileParser\Strategy\Csv\CsvStrategy;
 use Symfony\Component\Yaml\Parser;
 
 class StrategyFactoryTest extends \PHPUnit_Framework_TestCase
@@ -16,20 +19,29 @@ class StrategyFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testItShouldCreateCsvStrategy()
     {
+        $options = ['delimiter' => ';'];
         $expected = new CsvStrategy();
-        $this->assertEquals($expected, $this->sut->createCsvStrategy());
+        $expected->setOptions($options);
+
+        $this->assertEquals($expected, $this->sut->createCsvStrategy($options));
     }
 
     public function testItShouldCreateCsvColumnarStrategy()
     {
+        $options = ['delimiter' => ';'];
         $expected = new CsvColumnarStrategy();
-        $this->assertEquals($expected, $this->sut->createCsvColumnarStrategy());
+        $expected->setOptions($options);
+
+        $this->assertEquals($expected, $this->sut->createCsvColumnarStrategy($options));
     }
 
     public function testItShouldCreateCsvRowsStrategy()
     {
+        $options = ['delimiter' => ';'];
         $expected = new CsvRowsStrategy();
-        $this->assertEquals($expected, $this->sut->createCsvRowsStrategy());
+        $expected->setOptions($options);
+
+        $this->assertEquals($expected, $this->sut->createCsvRowsStrategy($options));
     }
 
     public function testItShouldCreateIniStrategy()

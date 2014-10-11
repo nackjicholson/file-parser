@@ -6,7 +6,6 @@
 vendor
 composer.phar
 composer.lock
-composer.lock
 
 # Test and build artifacts
 build

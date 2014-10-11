@@ -22,6 +22,9 @@ class FileParserTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider formatProvider
+     * @param $fileArgument
+     * @param $testMethod
+     * @param $factoryMethod
      */
     public function testAllFormats($fileArgument, $testMethod, $factoryMethod)
     {
