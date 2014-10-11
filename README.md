@@ -38,24 +38,27 @@ Array
 
 Via [composer](http://getComposer.org)
 
-`compser require nackjicholson/file-parser=~2.0`
+`compser require nackjicholson/file-parser=~2.1`
 
 or add too composer.json
 ```json
 "require": {
-    "nackjicholson/file-parser": "~2.0"
+    "nackjicholson/file-parser": "~2.1"
 }
 ```
 
 ## CSV
 
-This library provides three ways to parse a csv file into a php array.
+This library provides three ways to parse a csv file into a php array. There is full
+support for delimiter, enclosure, and escape options by passing an associative
+array of options to each csv method. `csv(mixed $file, array $options)`. Options are set
+default as `['delimiter' => ',', 'enclosure' => '"', 'escape' => '\\']`. There is an example of a
+how to set a file to parse with a `;` delimiter in `example/example.php`.
 
-**WARNING:** Only `,` delimeters are supported. Please contribute! :)
+### ::csv(mixed $file, array $options)
 
-### ::csv
-
-This method provides a literal parse of a file as a csv. Each line is translated to an array of values. Empty lines are not skipped.
+This method provides a literal parse of a file as a csv. Each line is translated to an
+array of values. Empty lines are not skipped.
 
 ```
 foo,bar
@@ -73,7 +76,7 @@ bingo,bango,bongo
 ]
 ```
 
-### ::csvColumnar
+### ::csvColumnar(mixed $file, array $options)
 
 Parses the contents of a csv as data structured columnar. Takes into account the first row of a csv file as column headers, and attaches each column header to its associated row value.
 
@@ -105,7 +108,7 @@ The fourth is not a row, it's a blank line.
 ]
 ```
 
-### ::csvRows
+### ::csvRows(mixed $file, array $options)
 
 Parses the contents of a csv where each row uses the first value as a key, which is set with the subsequent values. This is ideal for a csv which describes a set of `key => value` pairs, or `key => [ values... ]`.
 
@@ -129,7 +132,7 @@ As you can see it ignores blank lines, or lines where the key would be empty.
 
 ## INI
 
-### ::ini
+### ::ini(mixed $file)
 
 This method will parse a php ini configuration file into an array. It delegates directly to PHP's built in function `parse_ini_file`.
 
@@ -137,7 +140,7 @@ This method will parse a php ini configuration file into an array. It delegates 
 
 ## JSON
 
-### ::json
+### ::json(mixed $file)
 
 Parses a json file into a php array. This parsing strategy delegates directly to PHP's built in `json_decode`.
 
@@ -153,7 +156,7 @@ Parses a json file into a php array. This parsing strategy delegates directly to
 
 ## YAML
 
-### ::yaml
+### ::yaml(mixed $file)
 
 Parses a yaml file into a php array. This parsing strategy delegates directly to [symfony/Yaml](http://github.com/symfony/Yaml)
 
