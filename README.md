@@ -53,9 +53,13 @@ or add too composer.json
 
 This library provides three ways to parse a csv file into a php array. There is full
 support for delimiter, enclosure, and escape options by passing an associative
-array of options to each csv method. `csv(mixed $file, array $options)`. Options are set
-default as `['delimiter' => ',', 'enclosure' => '"', 'escape' => '\\']`. There is an example of a
-how to set a file to parse with a `;` delimiter in `example/example.php`.
+array of options to each csv method. Options default to:
+
+```
+['delimiter' => ',', 'enclosure' => '"', 'escape' => '\\']
+```
+
+There is an example of how to set a file to parse with a `;` delimiter in `example/example.php`.
 
 ### ::csv(mixed $file, array $options = [])
 
