@@ -57,7 +57,7 @@ array of options to each csv method. `csv(mixed $file, array $options)`. Options
 default as `['delimiter' => ',', 'enclosure' => '"', 'escape' => '\\']`. There is an example of a
 how to set a file to parse with a `;` delimiter in `example/example.php`.
 
-### ::csv(mixed $file, array $options)
+### ::csv(mixed $file, array $options = [])
 
 This method provides a literal parse of a file as a csv. Each line is translated to an
 array of values. Empty lines are not skipped.
@@ -78,7 +78,7 @@ bingo,bango,bongo
 ]
 ```
 
-### ::csvColumnar(mixed $file, array $options)
+### ::csvColumnar(mixed $file, array $options = [])
 
 Parses the contents of a csv as data structured columnar. Takes into account the first row of a csv file as column headers, and attaches each column header to its associated row value.
 
@@ -110,7 +110,7 @@ The fourth is not a row, it's a blank line.
 ]
 ```
 
-### ::csvRows(mixed $file, array $options)
+### ::csvRows(mixed $file, array $options = [])
 
 Parses the contents of a csv where each row uses the first value as a key, which is set with the subsequent values. This is ideal for a csv which describes a set of `key => value` pairs, or `key => [ values... ]`.
 
